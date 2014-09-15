@@ -1,8 +1,19 @@
 from libfcg.fcg import FCG
 from oslo.config import cfg
 
-from vmthunder.drivers import rootwrap
+rootwrap_opts = [
+    cfg.StrOpt('root_helper',
+               default='sudo nova-rootwrap /etc/nova/rootwrap.conf',
+               help='root helper for none-root users'),
+]
 
+CONF = cfg.CONF
+CONF.register_opts(rootwrap_opts)
+
+
+def root_helper():
+    return CONF.root_helper
+    
 fcg_opts = [
     cfg.StrOpt('fcg_name',
                default='fcg',
