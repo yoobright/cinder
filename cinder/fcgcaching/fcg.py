@@ -3,7 +3,7 @@ from oslo.config import cfg
 
 rootwrap_opts = [
     cfg.StrOpt('root_helper',
-               default='sudo nova-rootwrap /etc/nova/rootwrap.conf',
+               default='sudo cinder-rootwrap /etc/cinder/rootwrap.conf',
                help='root helper for none-root users'),
 ]
 
